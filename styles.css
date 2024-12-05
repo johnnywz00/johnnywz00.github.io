@@ -1,0 +1,17 @@
+h1 {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: rgb(156, 112, 55);
+    background-color: rgb(85, 50, 14);
+    border: chocolate;
+    border-radius: 6px;
+    border-style: dotted;
+
+}
+
+body {
+    background-color: rgb(29, 56, 119);
+    border-style: groove;
+    border-radius: 7px;
+    border-color: chocolate;
+    color: rgb(233, 207, 92);
+}

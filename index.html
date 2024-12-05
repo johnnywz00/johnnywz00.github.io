@@ -1,9 +1,185 @@
+<!DOCTYPE HTML>
+<html>
+        <script>
+            // alert('Ahushganaloy Memnikahentet!')
+        </script>
 
-+--+-+--++
-|  |||  ||
-|  |||  |/
-\  \/  //
- \    //
-  |  ||
-  |  |/
-  +--+
+    <head>
+        <meta charset="utf-8">
+        <title>Hegluzonk</title>
+        <link rel="stylesheet" href="styles.css" />
+        <!-- <style>
+                // You can do regular css in a style under <head>
+           h3 {
+            color:aliceblue; 
+           }
+        </style> -->
+        <!-- <style>
+            h1 {
+                color: rgb(68, 110, 206);
+                background-color: blueviolet;
+                border: chocolate;
+                border-radius: 3px;
+                border-style: dotted;
+            
+            }
+        </style> -->
+    </head>
+
+    <body>
+        <button type="button">Player 1: Whodgrelm Gralevjeekpi</button>
+        <button onclick="createParagraph()">Amkhut</button>
+        <style>
+            button {
+                font-family: "helvetica neue", helvetica, sans-serif;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+                border: 2px solid rgb(200 200 0 / 60%);
+                background-color: rgb(0 217 217 / 60%);
+                color: rgb(100 0 0 / 100%);
+                box-shadow: 1px 1px 2px rgb(0 0 200 / 40%);
+                border-radius: 10px;
+                padding: 3px 10px;
+                cursor: grab;
+            }
+        </style>
+        <h1>Trau u shgethze</h1>
+        <p id="Pzoknochoy"></p>
+        Inline Script (option 1):
+        External script (option 2):
+        </body>
+        <script type="module" src="fs.js"></script>
+        
+</html>
+<script>
+
+    /* CSS NOTES
+    
+    - multiple elements can be targeted with comma:  p, h1 { }
+    - target a class selector by starting with a period: .specialPara { }
+        or limit which elements of that class are affected: li.special { }
+    - target an element type only when contained within another: li em { }  // only em's within li
+    - " " only when following another type at same hierarchy level: h1 + p { }
+    - when an element has states: a:link { }  a:visited { }
+    - and deeper layers: h1 + ul + p { }
+    - CASE INSENSITIVE!
+    - width: calc(90% - 30px);
+    */
+
+            // ! place external scripts in the head with type="module":
+            // js will load but not be executed till html loaded
+            // if non-module use <script defer src...  or async if html doesn't need to be ready
+            // backtick string for using embedded
+            // var can be redeclared or declared after usage
+            // triple equals recommended for clarity vs. double
+            /*
+            dp(val) = console.log(val)
+            squo and dquo strs interchangeable. backtick str allows embed and declare over multiple lines
+            -failed indexOf returns -1
+            -substr is slice(startIdx,onePastEndIdx)
+            -push_back/append is push, and can take multiple args. returns new length!
+            -prepend is unshift
+            -pop will return the last elem
+            -shift() erases first elem
+            -removeElems is splice(startIdx,#ofElems)
+            -subset is filter(pred)
+            -array.toString() returns "elem,elem2,elem3" (commas);  join() allows diff. separator
+            -if not false, undefined, null, 0, NaN, or an empty string ('') actually returns true 
+            -can omit parenths for one-param anonfunc; can also omit curlies and 'return' for single-liner: elem=>elem * 2
+            -addEventListener : click, mouseover, mouseout, dblclick, focus, blur
+            -removeEventListener
+            <button onclick="funcName()">Button Text</button>  PRIMITIVE, DEPRECATED
+            -event.target  is the element acted upon, so even if handler is defined in parent div, the callback can say "e.target.style.backgroundColor" and individual tiles etc. within that div can be changed if clicked.
+            -event.currentTarget is the element defining the handler
+            -inline object ("object literal") syntax: curly, colon, comma. 
+            const obj = {
+                propname : val,
+                prop2 : val2
+                prop3 : function() {          // this syntax allowed but not best
+                    console.log(this.prop2);  // have to use "this", boo 
+                }
+                method1() {
+                    console.log(this.propname); //still have to use "this"
+                }
+            }
+            nest anonymous/literal objs:
+            const obj = {
+                name : {
+                    first : val,
+                    last : val
+                },
+                prop2 : val
+            }
+            -JAVASCRIPT OBJECTS CAN BE TREATED ALMOST LIKE LUTAB OF PROPNAMES AS STRING KEYS:
+                obj.name.first can be equivalently accessed by obj["name"]["first"]
+                -this form is not preferred except in situ. where only it can be used:
+                    function func(propName) {
+                        console.log(obj[propName]);
+                        //could not be accessed by obj.propName  (this is equiv to TADS obj.(propName)? )
+                    }
+                -can set prop values with this form as well
+            -New props/methods can be created/added to an object by simply
+                obj.newPropName = val;  OR
+                obj["newPropName"] = val/func;
+            -bracket notation comes in handy again for:
+                    const myDataName = nameInput.value;     //user has typed we know not what
+                    const myDataValue = nameValue.value;
+                    person[myDataName] = myDataValue;
+            -no class declaration? if there's a func called Person(args), you can just do obj = new Person(arg);
+            -objects have "prototype" (kind of like leftmost Class in supclaslist, or is only single inheritance?), usu. in __proto__ prop, but best to access by Object.getPrototypeOf(obj);   value of __proto__ is other obj, which also has its own proto etc.; top of the chain is Object.prototype, which has null as proto
+            -"shadowing" is basically overriding
+            -to "instantiate", you can simply define a const with an object literal, and then Object.create(objAsLiteral)
+            -OR, const obj = {...}  function Person { }, Object.assign(Person.prototype, obj)
+            -Object.hasOwn(obj,"prop") is like propDefined, PDD
+            -ENCAPSULATION is the public/private difference
+            -class declarations are
+                    name = '';  //not colon comma
+            -constructor can be omitted
+            -class Professor extends Person
+            -super() as inherited
+            -private members marked with hashtag:  #data = 234;   this.#data   #privateMethod()
+                    -hash members can ONLY be used from class body; not even from derived
+            -turning an obj into a JSON string: SERIALIZATION. vice versa: DESERIALIZATION
+            -JSON only contains data not methods
+                    -requires dquo around prop names and string literals. squo can be used for the outermost delimiters
+            -JSON.parse()  JSON.stringify()
+            -regardless of where const is defined within a block, it's in scope for all of that block 
+            -add an empty string to numbers to convert whole expr to string
+            -functions ARE OBJECTS and can have properties etc. added to like other objs
+            -inner/nested funcs can be declared with normal syntax (enclosing func doesn't have access to their locals); don't have to use var = lambda
+            -"JavaScript classes are just functions that must be instantiated with the new operator."
+            -fluidity of class def:
+
+            const withAuthentication = (cls) =>
+                class extends cls {
+                    authenticate() {
+                    // …
+                    }
+                };
+            class Admin extends withAuthentication(Person) {
+            // …
+            }
+
+            -there is a `static` keyword for props in class defs
+            -"3 ways to write async code in JS": callback-based (setTimeout()), Promise-based, async/await
+                -call-back based can create nested callbacks, bad for reading, debugging, error catching. Promises
+            -"computationally intensive tasks that are pure JavaScript will still block the main thread. To achieve real paralleling, you may need to use workers."
+            -Promise is an object returned by async function that represents state of the operation
+            -import { foo } from "./foo.js" (URL relative to current module);    export const a = 1;
+            -js manipulation of .style.[attr] are in camelcase even though css is in kebab case (backgroundColor/background-color)
+            -3rd party APIs usually "included" in a <script src... defer> in head
+            -#!/usr/bin/env node.          This is called hashbang comment syntax, and is a special comment used to specify the path to a particular JavaScript engine that should execute the script. 
+
+
+
+
+            HTML
+            -void elements like <img  do not have to end with  /> but can, and double as XML this way
+            -attribute values always enclose in quotes (though can work without them); single or double
+            -have to use entities not escape chars
+            -<!doctype html> is artifact that has to be included
+            -<html>   the root element
+            -JS can access document.getElementById("elem").innerHTML  and actual whitespace will be preserved
+
+            */
+</script>
